@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>Onboarding Checklist Demo</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <nav>
+            <div class="flex justify-between items-center p-4 border-b">
+                <div class="font-bold">Your Brand</div>
+                <div class="flex space-x-4 items-center">
+                    <div class="hover:underline cursor-pointer">Home</div>
+                    <div class="hover:underline cursor-pointer">About</div>
+                    <div class="hover:underline cursor-pointer">Contact</div>
+                    <div id="soc-popup-opener">
+                        <div class="hover:underline cursor-pointer">Get set up</div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <content>
+            <div class="rounded-lg h-[calc(100vh-6rem)] w-[calc(100vw-2rem)] bg-gray-50 flex flex-col justify-center items-center m-4 space-y-4">
+                <button class="w-80 p-1 border bg-blue-50" onclick="setUserProfile()">Set user profile</button>
+                <button class="w-80 p-1 border bg-blue-50" onclick="markItemDone('EVENT_KEY_1')">Mark EVENT_KEY_1 as done</button>
+                <button class="w-80 p-1 border bg-blue-50" onclick="markItemDone('EVENT_KEY_2')">Mark EVENT_KEY_2 as done</button>
+                <button class="w-80 p-1 border bg-blue-50" onclick="markItemDone('EVENT_KEY_3')">Mark EVENT_KEY_3 as done</button>
+            </div>
+        </content>
+        <script src="https://cdn.usemevo.com/soc-sdk.min.js" cid="PASTE_YOUR_WIDGET_ID_HERE"></script>
+        <script>
+        (function () {
+            window.soc.init();
+
+            document.addEventListener('soc-event', (event) => {
+                if (event.detail.key === 'EVENT_KEY_1') {
+                    alert('EVENT_KEY_1 event triggered');
+                } else if (event.detail.key === 'EVENT_KEY_2') {
+                    alert('EVENT_KEY_2 event triggered');
+                } else if (event.detail.key === 'EVENT_KEY_3') {
+                    alert('EVENT_KEY_3 event triggered');
+                }
+            });
+        })();
+
+        function setUserProfile() {
+            window.soc.setUserProfile({
+                name: 'James Doe',
+                email: 'jamesdoe@gmail.com',
+                custom_data: {
+                    paid: true,
+                    custom_key: 'custom_value',
+                    another_custom_key: 123
+                }
+            })
+        }
+
+        function markItemDone(item) {
+            window.soc.markStepDone(item);
+        }
+        </script>
+    </body>
+</html>
