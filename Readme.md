@@ -1,5 +1,5 @@
 
-## Example project for onboarding checcklist widget integration
+## Example project for onboarding checklist widget integration
 
 You can watch video step by step video tutorial [here.](https://youtu.be/PHjOEzNgLY4)
 
